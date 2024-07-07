@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function(){
+    Route::get('/',[AttendanceController::class, 'index']);
+    Route::post('/clock_in',[AttendanceController::class, 'clock_in'])->name('clock_in');
+    Route::post('/clock_out',[AttendanceController::class, 'clock_out'])->name('clock_out');
 });
+
