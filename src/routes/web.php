@@ -18,5 +18,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/',[AttendanceController::class, 'index']);
     Route::post('/clock_in',[AttendanceController::class, 'clock_in'])->name('clock_in');
     Route::post('/clock_out',[AttendanceController::class, 'clock_out'])->name('clock_out');
+    Route::post('/break_start',[AttendanceController::class, 'break_start'])->name('break_start');
+    Route::post('/break_end',[AttendanceController::class, 'break_end'])->name('break_end');
+    Route::get('/attendance/filter', [AttendanceController::class, 'filter'])->name('attendance.filter');
 });
 

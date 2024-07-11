@@ -18,11 +18,12 @@ class CreateAttendancesTable extends Migration
 
             $table->date('date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->dateTime('clock_in_time')->nullable();
-            $table->dateTime('clock_out_time')->nullable();
-            $table->dateTime('break_start_time')->nullable();
-            $table->dateTime('break_end_time')->nullable();
-            $table->Integer('total_break_time')->default(0);
+            $table->time('clock_in_time')->nullable();
+            $table->time('clock_out_time')->nullable();
+            $table->time('break_start_time')->nullable();
+            $table->time('break_end_time')->nullable();
+            $table->time('total_clock_time')->default(0);
+            $table->time('total_break_time')->default(0);
             $table->timestamps();            
         });
     }

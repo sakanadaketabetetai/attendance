@@ -22,7 +22,7 @@
                             <a href="/" class="header_nav-text">ホーム</a>
                         </li>
                         <li>
-                            <a href="/date" class="header_nav-text">日付一覧
+                            <a href="{{ route('attendance.filter') }}" class="header_nav-text">日付一覧
                             </a>
                         </li>
                         <li>
