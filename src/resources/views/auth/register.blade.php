@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('css')
-
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection
 
 @section('content')
 
 <div class="register_content">
     <div class="register_title">
-        <h2>会員登録</h2>
+        <h2 class="register_title-text">会員登録</h2>
     </div>
     <div class="register_form">
         <form action="/register" method="post">
@@ -27,11 +27,11 @@
             </div>
             <div class="register_form-button">
                 <button class="register_form-button-submit">会員登録</button>
-            </div>
+            </div> 
         </form>
         <div class="register_link">
-            <p class="register_link-text">アカウントお持ちの方はこちら</p>
-            <a href="/login" class="register_link">ログイン</a>
+            <p class="register_text">アカウントお持ちの方はこちら</p>
+            <a href="/login" class="register_link-text">ログイン</a>
         </div>
     </div>
 </div>

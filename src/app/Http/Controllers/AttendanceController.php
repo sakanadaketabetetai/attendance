@@ -10,8 +10,9 @@ use App\Models\Attendance;
 class AttendanceController extends Controller
 {
     public function index(){
-        $user_name = Auth::user()->name;
-        return view('index',compact('user_name'));
+        $user = Auth::user();
+        $attendance = Attendance::where('user_id', $user->id)->latest()->first();
+        return view('index',compact('user', 'attendance'));
     }
 
     public function clock_in(){
@@ -32,7 +33,7 @@ class AttendanceController extends Controller
         }
         $timestamp = Attendance::create([
             'user_id' => $user->id,
-            'clock_in_time' => Carbon::now()->format('h:i:s'),
+            'clock_in_time' => Carbon::now(),
             'date' => $newTimestampDay
         ]);
 
@@ -46,14 +47,22 @@ class AttendanceController extends Controller
         if(!empty($timestamp->clock_out_time)){
             return redirect()->back()->with('error', 'すでに退勤の打刻がされているか、出勤打刻がされていません');
         }
-        $clockStartTime = Carbon::parse($timestamp->clock_in_time);
-        $clockEndTime = Carbon::now();
+        $clockInTime = Carbon::parse($timestamp->clock_in_time);
+        $clockOutTime = Carbon::now();
 
-        $clockTotalTimeInSeconds = $clockStartTime->diffInSeconds($clockEndTime);
-        $clockTotalTime = gmdate('h:i:s', $clockTotalTimeInSeconds); 
+        $totalClockSeconds = $clockOutTime->diffInSeconds($clockInTime);
+
+        //秒数から時間、分、秒を計算
+        $hours = floor($totalClockSeconds/3600);
+        $minutes = floor(($totalClockSeconds % 3600) / 60);
+        $seconds = $totalClockSeconds % 60;
+
+        //フォーマットをHH:MM:SSにし$totalClockTimteに代入
+        $totalClockTime = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+
         $timestamp->update([
-            'clock_out_time' => $clockEndTime->format('h:i:s'),
-            'total_clock_time' => $clockTotalTime
+            'clock_out_time' => $clockOutTime,
+            'total_clock_time' => $totalClockTime
         ]);
 
         return redirect()->back()->with('my_status', '退勤打刻が完了しました');
@@ -71,7 +80,7 @@ class AttendanceController extends Controller
 
         if((!empty($latestAttendance->clock_in_time)) && (empty($latestAttendance->break_start_time))){
             $latestAttendance->update([
-                'break_start_time' => Carbon::now()->format('h:i:s')
+                'break_start_time' => Carbon::now()
             ]);  
             return redirect()->back()->with('break_status', '休憩を開始しました');  
         } 
@@ -96,14 +105,21 @@ class AttendanceController extends Controller
         if(empty($timestamp->break_start_time)){
             return redirect()->back()->with('break_error', '休憩が開始されていません');
         }
-        $breakStartTime = Carbon::parse($timestamp->clock_in_time);
+        $breakStartTime = Carbon::parse($timestamp->break_start_time);
         $breakEndTime = Carbon::now();
+        $totalBreakSeconds = $breakEndTime->diffInSeconds($breakStartTime);
 
-        $breakTotalTimeInSeconds = $breakStartTime->diffInSeconds($breakEndTime); 
-        $breakTotalTime = gmdate('h:i:s', $breakTotalTimeInSeconds); 
+        //秒数から時間、分、秒を計算
+        $hours = floor($totalBreakSeconds / 3600);
+        $minutes = floor(($totalBreakSeconds % 3600) / 60);
+        $seconds = $totalBreakSeconds % 60;
+        
+        //フォーマットをHH:MM:SSにし$totalClockTimteに代入
+        $totalBreakTime = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+
         $timestamp->update([
-            'break_end_time' => $breakEndTime->format('h:i:s'),
-            'total_break_time' => $breakTotalTime
+            'break_end_time' => $breakEndTime,
+            'total_break_time' => $totalBreakTime
         ]);
 
         return redirect()->back()->with('break_status', '休憩が終了しました');

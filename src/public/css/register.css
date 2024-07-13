@@ -1,27 +1,27 @@
-.login_content{
+.register_content{
     max-width: 1230px;
     background-color: #f1f1f1;
     padding-bottom: 80px;
 }
 
-.login_title{
-    margin-bottom: 10px;
+.register_title{
+    margin-bottom: 20px;
     padding: 20px 15px 10px;
     max-width: 1230px;
     text-align: center;
 }
 
-.login_title-text{
+.register_title-text{
     text-decoration: none;
     font-size: 22px;
 }
 
-.login_form{
+.register_form{
     max-width:500px;
     margin: 0 auto;
 }
 
-.login_form-input{
+.register_form-input{
     margin: 0 auto;
     width: 60%;
 }
@@ -36,12 +36,12 @@ input{
     background-color: #f1f1f1;
 }
 
-.login_form-button{
+.register_form-button{
     margin: 0 auto;
     width: 60%;
 }
 
-.login_form-button-submit{
+.register_form-button-submit{
     width: 100%;
     padding: 0.5em;
     border: none;
@@ -55,19 +55,19 @@ input{
     cursor: pointer;
 }
 
-.login_link{
+.register_link{
     margin: 0 auto;
     width: 60%;
     text-align: center;
 }
 
-.login_text{
+.register_text{
     text-decoration: none;
     color: #999;
     font-size: 14px;
 }
 
-.login_link-text {
+.register_link-text {
     text-decoration: none;
     color: #0000e5;
     font-size: 14px;

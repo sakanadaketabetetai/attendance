@@ -6,34 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    @yield('css')
     <title>Atte</title>
 </head>
 <body>
-    <header>
-        <div>
-            <div class="header_logo">
-                <h1>Atte</h1>
-            </div>
-            <div class="header_nav">
-                <nav>
-                    <ul>
-                        @if(Auth::check())
-                        <li>
-                            <a href="/" class="header_nav-text">ホーム</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('attendance.filter') }}" class="header_nav-text">日付一覧
-                            </a>
-                        </li>
-                        <li>
-                            <form action="/logout" method="post">
-                                @csrf
-                                <button class="header-nav__button">ログアウト</button>
-                            </form>
-                        </li>
-                        @endif
-                    </ul>
-                </nav>
+    <header class="header">
+        <div class="header_inner">
+            <div class="header-utilities">
+                <a href="/" class="header_logo">Atte</a>
+                <div class="header-nav">
+                    @if(Auth::check())
+                    <div class="header-nav_item">
+                        <a href="/" class="header-nav_link">ホーム</a>
+                    </div>
+                    <div class="header-nav_item">
+                        <a href="{{ route('attendance.filter') }}" class="header-nav_link">日付一覧
+                        </a>
+                    </div>
+                    <div class="header-nav_item">
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button class="header-nav_button">ログアウト</button>
+                        </form>
+                    </div>
+                    @endif
+                </div>
             </div>
         </div>
     </header>

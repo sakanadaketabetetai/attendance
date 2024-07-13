@@ -1,0 +1,58 @@
+.index_content{
+    max-width: 1230px;
+    background-color: #f1f1f1;
+    padding-bottom: 80px;
+}
+
+.index_title{
+    margin-bottom: 20px;
+    padding: 20px 15px 10px;
+    max-width: 1230px;
+    text-align: center;
+}
+
+.index_title-text{
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.index_clock{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.index_clockIn {
+    margin: 20px auto;
+}
+.index_clockOut {
+    margin: 20px auto;
+}
+.index_breakStart{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.form_button{
+    width: 400px;
+    height: 150px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.form_button.clocked_in{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1f1f1;
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+}
