@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/clock_out',[AttendanceController::class, 'clock_out'])->name('clock_out');
     Route::post('/break_start',[AttendanceController::class, 'break_start'])->name('break_start');
     Route::post('/break_end',[AttendanceController::class, 'break_end'])->name('break_end');
-    Route::get('/attendance/filter', [AttendanceController::class, 'filter'])->name('attendance.filter');
+    Route::get('/attendance/{date?}', [AttendanceController::class, 'filter'])->name('attendance');
+    Route;;get('auto-clock-out-in', [AttendanceController::class, 'autoClockOutIn'])->name('auto.clock.out.in');
 });
 

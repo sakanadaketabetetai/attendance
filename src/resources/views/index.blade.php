@@ -30,12 +30,12 @@
                 </form>
 
             </div>
-            <div class="index_breakStart">
+            <div class="index_break">
                 <form action="{{ route('break_start') }}" method="post">
                     @csrf
-                    <div class="index_break_start">
+                    <div class="index_breakStart">
                         @php
-                            $isBreakstart = isset($attendance->break_start_time) && !isset($attendance->break_end_time) ||
+                            $isBreakstart = isset($break_time->break_start_time) && !isset($break_time->break_end_time) ||
                                             (isset($attendance->clock_in_time) && isset($attendance->clock_out_time));
                         @endphp
                         <button class="form_button {{ $isBreakstart ? 'clocked_in':''}}" type="submit">休憩開始</button>
@@ -48,10 +48,10 @@
                 @endif
                 <form action="{{ route('break_end') }}" method="post">
                     @csrf
-                    <div class="index_break_end">
+                    <div class="index_breakEnd">
                         @php
-                            $isBreakEnd = isset($attendance->break_start_time) && isset($attendance->break_end_time) ||
-                            (isset($attendance->clock_in_time) && !isset($attendance->break_start_time));
+                            $isBreakEnd = isset($break_time->break_start_time) && isset($break_time->break_end_time) ||
+                            (isset($attendance->clock_in_time) && !isset($break_time->break_start_time));
                         @endphp
 
                         <button class="form_button {{ $isBreakEnd ? 'clocked_in' : '' }}" type="submit">

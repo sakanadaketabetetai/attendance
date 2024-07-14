@@ -17,23 +17,29 @@
 }
 
 .index_clock{
-    display: flex;
+    display: flex; 
     justify-content: space-between;
     width: 70%;
     margin: 10px auto;
 }
 
 .index_clockIn {
-    margin: 20px auto;
+    margin: 20px 5px;
 }
 .index_clockOut {
-    margin: 20px auto;
+    margin: 20px 5px;
 }
-.index_breakStart{
+.index_break{
     display: flex;
     justify-content: space-between;
     width: 70%;
-    margin: 20px auto;
+    margin: 10px auto;
+}
+.index_breakStart {
+    margin: 20px 5px;
+}
+.index_breakEnd {
+    margin: 20px 5px;
 }
 
 .form_button{

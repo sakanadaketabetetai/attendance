@@ -20,7 +20,7 @@
                         <a href="/" class="header-nav_link">ホーム</a>
                     </div>
                     <div class="header-nav_item">
-                        <a href="{{ route('attendance.filter') }}" class="header-nav_link">日付一覧
+                        <a href="{{ route('attendance') }}" class="header-nav_link">日付一覧
                         </a>
                     </div>
                     <div class="header-nav_item">
@@ -39,5 +39,10 @@
             @yield('content')
         </div>
     </main>
+    <footer>
+        <div class="footer_content">
+            <small>Atte,inc.</small>
+        </div>
+    </footer>
 </body>
 </html>

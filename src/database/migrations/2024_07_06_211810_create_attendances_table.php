@@ -15,13 +15,10 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-
             $table->date('date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->dateTime('clock_in_time')->nullable()->default(null);
             $table->dateTime('clock_out_time')->nullable()->default(null);
-            $table->dateTime('break_start_time')->nullable()->default(null);
-            $table->dateTime('break_end_time')->nullable()->default(null);
             $table->time('total_clock_time')->nullable()->default(null);
             $table->time('total_break_time')->nullable()->default(null);
             $table->timestamps();            

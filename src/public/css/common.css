@@ -49,3 +49,20 @@
     cursor: pointer;
     outline: none;
 }
+footer{
+    max-width: 1230px;
+}
+
+.footer_content{
+    margin: 20px auto;
+    text-align: center;
+}
+
+small{
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 0;
+
+}
