@@ -1,0 +1,33 @@
+.user_attendance_content{
+    max-width: 1230px;
+    background-color: #f1f1f1;
+    padding-bottom: 80px;
+    padding-top: 30px;
+}
+
+.user_attendance-title{
+    max-width:1230px;
+    margin : 20px auto;
+    text-align: center;
+    padding: 20px auto;
+}
+
+.title-text{
+    font-size: 24px;
+    text-decoration: none;
+    padding: 30px auto;
+}
+
+th, td{
+    background-color: #f1f1f1;
+    padding: 25px 80px;
+    text-align: center;
+    font-size: 16px;
+    border-top:1px solid #999;
+}
+
+.table{
+    max-width: 1230px;
+}
+
+

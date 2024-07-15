@@ -7,6 +7,7 @@ use Auth;
 use Carbon\Carbon;
 use App\Models\Attendance;
 use App\Models\Break_time;
+use App\Models\User;
 
 class AttendanceController extends Controller
 {
@@ -36,6 +37,10 @@ class AttendanceController extends Controller
             'user_id' => $user->id,
             'clock_in_time' => Carbon::now(),
             'date' => $newTimestampDay
+        ]);
+
+        $user->update([
+            'is_working' => 1
         ]);
 
         return redirect()->back()->with('my_status', '出勤打刻が完了しました');  
@@ -82,6 +87,10 @@ class AttendanceController extends Controller
             'clock_out_time' => $clockOutTime,
             'total_clock_time' => $totalClockTime,
             'total_break_time' =>$totalBreakTime
+        ]);
+
+        $user->update([
+            'is_working' => 0
         ]);
 
         return redirect()->back()->with('my_status', '退勤打刻が完了しました');
@@ -162,30 +171,16 @@ class AttendanceController extends Controller
         return view('attendance',compact('attendances', 'date'));
     }
 
-    public function autoClockOutIn()
-    {
-        $currentDate = Carbon::now();
+    
+    public function users(){
+        $users = User::all();
+        return view('users',compact('users'));
+    }
 
-        //23:59の時点で勤務中のユーザーを取得
-        $userWorking = User::where('is_working', true)->get();
-
-        foreach($userWorking as $user){
-            //最新の勤務記録を取得
-            $attendance = Attendance::where('user_id',$user->id)->latest()->first();
-
-            if($attendance && !$attendance->clock_out_time) {
-                //勤務終了処理
-                $attendance->clock_out_time = $currentDate->copy()->setTime(23,59,59);
-                $attendance->save();
-
-                //勤務開始
-                $newAttendance = new Attendance();
-                $newAttendance->user_id = $user->id;
-                $newAttendance->clock_in_time = $currentDate->copy()->addDay()->startOfDay();
-                $newAttendance->date = $currentDate->copy()->addDay()->startOfDay();
-                $newAttendance->save();
-            }
-        }
+    public function user_attendance($id){
+        $user_name = User::find($id)->only('name');
+        $user_attendances = Attendance::where('user_id',$id)->paginate(5);
+        return view('user_attendance',compact('user_attendances','user_name'));
     }
 
 }

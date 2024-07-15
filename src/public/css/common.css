@@ -66,3 +66,7 @@ small{
     padding: 0;
 
 }
+
+body{
+    max-width: 1230px;
+}

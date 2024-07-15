@@ -12,8 +12,6 @@
         <span class="date_text">{{ $date->toDateString() }}</span>
         <a href="{{ route('attendance', ['date' => $date->copy()->addDay()->toDateString()]) }}" class="date_link">&gt;</a>
     </div>
-    
-
     @if($attendances->isNotEmpty())
         <table> 
             <tr>
@@ -38,8 +36,7 @@
             @endforeach
         </table>    
         {{ $attendances->links() }}            
-
     @endif
-</>
+</div>
 @endsection
 

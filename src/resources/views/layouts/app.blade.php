@@ -24,6 +24,10 @@
                         </a>
                     </div>
                     <div class="header-nav_item">
+                        <a href="{{ route('users') }}" class="header-nav_link">ユーザー一覧
+                        </a>
+                    </div>
+                    <div class="header-nav_item">
                         <form action="/logout" method="post">
                             @csrf
                             <button class="header-nav_button">ログアウト</button>
