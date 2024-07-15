@@ -76,7 +76,7 @@ class AttendanceController extends Controller
             }
         }
 
-        //勤務時間を秒数から時間、分、秒を計算
+        //休憩時間を秒数から時間、分、秒を計算
         $break_hours = floor($totalBreakSeconds/3600);
         $break_minutes = floor(($totalBreakSeconds % 3600) / 60);
         $break_seconds = $totalBreakSeconds % 60;
