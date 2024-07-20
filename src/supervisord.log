@@ -1,0 +1,35 @@
+2024-07-20 05:16:50,194 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-20 05:16:50,196 INFO supervisord started with pid 1
+2024-07-20 05:16:51,200 INFO spawned: 'cron' with pid 9
+2024-07-20 05:16:51,201 INFO spawned: 'php-fpm' with pid 10
+2024-07-20 05:16:52,239 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-20 05:16:52,240 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-20 05:25:43,196 WARN received SIGQUIT indicating exit request
+2024-07-20 05:25:43,196 INFO waiting for cron, php-fpm to die
+2024-07-20 05:25:43,200 INFO stopped: php-fpm (exit status 0)
+2024-07-20 05:25:43,201 INFO stopped: cron (terminated by SIGTERM)
+2024-07-20 05:25:45,233 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-20 05:25:45,239 INFO supervisord started with pid 1
+2024-07-20 05:25:46,241 INFO spawned: 'cron' with pid 8
+2024-07-20 05:25:46,243 INFO spawned: 'php-fpm' with pid 9
+2024-07-20 05:25:47,283 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-20 05:25:47,283 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-20 05:31:59,199 INFO exited: cron (terminated by SIGTERM; not expected)
+2024-07-20 05:32:00,203 INFO spawned: 'cron' with pid 111
+2024-07-20 05:32:00,209 INFO exited: cron (exit status 1; not expected)
+2024-07-20 05:32:01,212 INFO spawned: 'cron' with pid 112
+2024-07-20 05:32:01,218 INFO exited: cron (exit status 1; not expected)
+2024-07-20 05:32:03,223 INFO spawned: 'cron' with pid 113
+2024-07-20 05:32:03,230 INFO exited: cron (exit status 1; not expected)
+2024-07-20 05:32:06,234 INFO spawned: 'cron' with pid 114
+2024-07-20 05:32:06,240 INFO exited: cron (exit status 1; not expected)
+2024-07-20 05:32:06,240 INFO gave up: cron entered FATAL state, too many start retries too quickly
+2024-07-20 05:47:33,575 INFO reaped unknown pid 93
+2024-07-20 05:48:34,977 INFO reaped unknown pid 533
+2024-07-20 05:51:20,474 INFO reaped unknown pid 653
+2024-07-20 05:53:58,448 INFO reaped unknown pid 716
+2024-07-20 05:54:01,557 INFO reaped unknown pid 824
+2024-07-20 05:55:01,557 INFO reaped unknown pid 832
+2024-07-20 05:55:58,771 INFO reaped unknown pid 802
+2024-07-20 05:56:31,136 INFO reaped unknown pid 880
+2024-07-20 05:58:04,185 INFO reaped unknown pid 953

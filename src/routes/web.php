@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,8 @@ use App\Http\Controllers\AttendanceController;
 |
 */
 
+
+
 Route::middleware('auth')->group(function(){
     Route::get('/',[AttendanceController::class, 'index']);
     Route::post('/clock_in',[AttendanceController::class, 'clock_in'])->name('clock_in');
@@ -25,4 +29,21 @@ Route::middleware('auth')->group(function(){
     Route::get('/user_attendance/{id?}', [AttendanceController::class, 'user_attendance'])->name('user_attendance');
     
 });
+
+Route::get('/email/verify', function(){
+    return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/'); // 認証後のリダイレクト先を指定
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// メール認証通知の再送信
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 

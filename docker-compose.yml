@@ -10,13 +10,13 @@ services:
       - ./src:/var/www/
     depends_on:
       - php
+      - mailcatcher
 
   php:
     build: ./docker/php
     volumes:
       - ./src:/var/www/
     working_dir: /var/www
-    command: bash -c "php-fpm -y /usr/local/etc/php-fpm.conf && cron && tail -f /var/log/cron.log"
 
   mysql:
     image: mysql:8.0.26
@@ -42,3 +42,9 @@ services:
       - mysql
     ports:
       - 8080:80
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
