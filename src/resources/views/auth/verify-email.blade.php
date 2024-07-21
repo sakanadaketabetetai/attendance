@@ -10,11 +10,11 @@
         <p>{{ session('message') }}</p>
     @endif
 
-    <p>Before proceeding, please check your email for a verification link.</p>
-    <p>If you did not receive the email, click below to request another.</p>
+    <p>登録したメールアドレスに確認メールを送信しました。受信後確認ボタンを押してください。</p>
+    <p>メールが届かない場合は以下をクリックすると、確認メールが再送されます。</p>
 
     <form method="POST" action="{{ route('verification.send') }}">
         @csrf
-        <button type="submit">Resend Verification Email</button>
+        <button type="submit">確認メールを再送する</button>
     </form>
 @endsection
