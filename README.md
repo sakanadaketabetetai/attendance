@@ -15,7 +15,9 @@
 
 ### Dockerビルド
 
-1. ```bash git clone git@github.com:sakanadaketabetetai/attendance.git ```
+1. ```bash 
+   git clone git@github.com:sakanadaketabetetai/attendance.git
+   ```
 2. DockerDesktopアプリを立ち上げる
 3. docker-compose up -d --build
 
