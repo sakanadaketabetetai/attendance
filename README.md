@@ -1,4 +1,4 @@
-# Attendance Management System
+# Atte(勤怠管理システム)
 
 ## 概要
 
@@ -8,10 +8,17 @@
 
 - リアルタイムでの打刻記録
 - 休憩時間の追跡
-- 日別、月別の出勤データのフィルタリング
+- 日別の出勤データのフィルタリング
 - ユーザーフレンドリーなインターフェース
 
-## インストール方法
+## 環境構築
+
+### Dockerビルド
+1. git clone git@github.com:sakanadaketabetetai/attendance.git
+2. DockerDesktopアプリを立ち上げる
+3. docker-compose up -d --build
+
+
 
 ### 前提条件
 
