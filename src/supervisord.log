@@ -33,3 +33,9 @@
 2024-07-20 05:55:58,771 INFO reaped unknown pid 802
 2024-07-20 05:56:31,136 INFO reaped unknown pid 880
 2024-07-20 05:58:04,185 INFO reaped unknown pid 953
+2024-07-20 22:35:06,479 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-07-20 22:35:06,487 INFO supervisord started with pid 1
+2024-07-20 22:35:07,489 INFO spawned: 'cron' with pid 9
+2024-07-20 22:35:07,490 INFO spawned: 'php-fpm' with pid 10
+2024-07-20 22:35:08,598 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-07-20 22:35:08,598 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

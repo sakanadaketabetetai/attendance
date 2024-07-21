@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth','verified'])->group(function(){
     Route::get('/',[AttendanceController::class, 'index']);
     Route::post('/clock_in',[AttendanceController::class, 'clock_in'])->name('clock_in');
     Route::post('/clock_out',[AttendanceController::class, 'clock_out'])->name('clock_out');
