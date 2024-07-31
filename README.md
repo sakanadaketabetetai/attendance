@@ -33,7 +33,7 @@
 
 1. リポジトリをクローンします:
     ```bash
-    git clone https://github.com/username/attendance-management-system.git
+    git clone git@github.com:sakanadaketabetetai/attendance.git
     ```
 2. 依存関係をインストールします:
     ```bash
