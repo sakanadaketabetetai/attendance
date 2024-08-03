@@ -35,9 +35,11 @@
 - 休憩時間の追跡
 - 日別の出勤データのフィルタリング
 - ユーザーフレンドリーなインターフェース
+## テーブル設計
+![スクリーンショット_3-8-2024_191053_](https://github.com/user-attachments/assets/d9e379aa-1519-40ec-9827-9dad83b0172b)
 
 ## ER図
-https://github.com/sakanadaketabetetai/attendance/issues/1#issue-2446274944
+![er](https://github.com/user-attachments/assets/69e8d0a2-b269-45a4-93b0-349661ff5e3c)
 
 ## 環境構築
 
