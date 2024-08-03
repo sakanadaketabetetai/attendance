@@ -36,6 +36,9 @@
 - 日別の出勤データのフィルタリング
 - ユーザーフレンドリーなインターフェース
 
+## ER図
+https://github.com/sakanadaketabetetai/attendance/issues/1#issue-2446274944
+
 ## 環境構築
 
 ### Dockerビルド
