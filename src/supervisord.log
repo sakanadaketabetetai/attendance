@@ -61,3 +61,4 @@
 2024-08-04 01:16:52,128 INFO spawned: 'php-fpm' with pid 10
 2024-08-04 01:16:53,149 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2024-08-04 01:16:53,149 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-08-04 07:06:08,795 INFO reaped unknown pid 2204
