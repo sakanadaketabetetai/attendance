@@ -1,5 +1,9 @@
 FROM php:7.4.9-fpm
 
+#タイムゾーンの設定
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+  && echo "Asia/Tokyo" > /etc/timezone
+
 COPY php.ini /usr/local/etc/php/
 
 # 必要なパッケージのインストールとPHP拡張モジュールのインストール
@@ -11,6 +15,9 @@ RUN apt-get update && apt-get install -y \
   cron \
   supervisor \
   && docker-php-ext-install pdo_mysql zip
+
+# PHP 設定ファイルをコピー
+COPY php.ini /usr/local/etc/php/
 
 WORKDIR /var/www
 
@@ -26,6 +33,9 @@ RUN chmod 0644 /etc/cron.d/laravel-cron
 
 # cronログファイルを作成
 RUN touch /var/log/cron.log
+
+# crontabを登録
+RUN crontab /etc/cron.d/laravel-cron
 
 # supervisordの設定ファイルをコピー
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf

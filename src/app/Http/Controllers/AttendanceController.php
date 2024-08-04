@@ -20,23 +20,22 @@ class AttendanceController extends Controller
 
     public function clock_in(){
         $user = Auth::user();
-        $oldTimestamp = Attendance::where('user_id', $user->id)->latest()->first();
-        $oldTimestampDay = null; // 初期化
+        $today = Carbon::today();
 
-        if($oldTimestamp){
-            $oldTimestampClockIn = new Carbon($oldTimestamp->clock_in_time);
-            $oldTimestampDay = $oldTimestampClockIn->startOfDay();
-        } 
+        $attendance = Attendance::where('user_id', $user->id)->whereDate('clock_in_time', $today)->latest()->first();
 
-        $newTimestampDay = Carbon::today();
-
-        if(($oldTimestampDay == $newTimestampDay) && (empty($oldTimestamp->clock_out_time))){
-            return redirect()->back()->with('error', 'すでに出勤打刻がされています');
+        if($attendance){
+            if (empty($attendance->clock_out_time)){
+                return redirect()->back()-with('error', 'すでに出勤しています。');
+            }else {
+                return redirect()->back()->with('error', '本日の勤務は終了しています。');
+            }
         }
+
         $timestamp = Attendance::create([
             'user_id' => $user->id,
             'clock_in_time' => Carbon::now(),
-            'date' => $newTimestampDay
+            'date' => $today
         ]);
 
         $user->update([

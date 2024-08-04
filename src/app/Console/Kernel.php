@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function (){
             $this->checkAndUpdateWorkStatus();
-        })->dailyAt('23:59');
+        })->dailyAt('0:00');
     }
 
     protected function checkAndUpdateWorkStatus()
